@@ -1,0 +1,37 @@
+﻿
+@model PagedList.IPagedList<ShopConnection.tbPRODUCT>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="small-container">
+
+    <!--Đoạn này lấy từ ~/Views/Shared/_Producers-->
+    @Html.Partial("_Producers", RedStoreWebsite.Models.BUS.ProducersBUS.Danhsach())
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-4">
+                <a href="@Url.Action("Details","Shop", new { id = @item.MaSP })"><img style="max-width: 238px; max-height: 258px;" src="~/images/products/@item.Hinh1"></a>
+                <a href="@Url.Action("Details","Shop", new { id = @item.MaSP })"><h4>@item.TenSP</h4></a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>@item.Dongia VNĐ</p>
+            </div>
+        }
+    </div>
+
+    <div class="pagination">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+
+</div>
+

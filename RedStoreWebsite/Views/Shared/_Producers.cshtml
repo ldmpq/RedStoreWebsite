@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ShopConnection.tbPRODUCER>
+
+<div class="row row-2">
+    <h2>All Products</h2>
+    <select id="producerDropdown">
+        <option>Choose producer</option>
+        @foreach (var item in Model)
+        {
+            <option data-url="@Url.Action("Index", "Producers", new { id = @item.MaNSX })">@item.TenNSX</option>
+        }
+    </select>
+</div>
+
+<script> 
+    document.getElementById('producerDropdown').addEventListener('change', function () {
+        var selectedOption = this.options[this.selectedIndex];
+        if (selectedOption.value !== '' && selectedOption.dataset.url) {
+            window.location.href = selectedOption.dataset.url;
+        }
+    });
+</script>

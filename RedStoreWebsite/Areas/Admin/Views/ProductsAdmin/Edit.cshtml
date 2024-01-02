@@ -1,0 +1,146 @@
+﻿@model ShopConnection.tbPRODUCT
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4"> 
+
+        @using (Html.BeginForm("Edit", "ProductsAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4">Sửa Sản phẩm</h6>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="MaSP"
+                               placeholder="name@example.com" required value="@Model.MaSP">
+                        <label for="floatingInput">Mã Sản phẩm</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="MaNSX"
+                               placeholder="name@example.com" required value="@Model.MaNSX">
+                        <label for="floatingInput">Mã Nhà sản xuất</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect"
+                                aria-label="Floating label select example" name="MaDM" required>
+                            <option selected>Danh mục</option>
+                            <option value="DM01">Giày bóng đá</option>
+                            <option value="DM02">Giày bóng rổ</option>
+                            <option value="DM03">Giày chạy bộ</option>
+                            <option value="DM04">Giày bóng chuyền</option>
+                        </select>
+                        <label for="floatingSelect">Open to select value</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingPassword" name="TenSP"
+                               placeholder="Password" required value="@Model.TenSP">
+                        <label for="floatingPassword">Tên Sản phẩm</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="Dongia" required value="@Model.Dongia">
+                        <span class="input-group-text">VNĐ</span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="Soluong"
+                               placeholder="name@example.com" required value="@Model.Soluong">
+                        <label for="floatingInput">Số lượng</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="Mota"
+                               placeholder="name@example.com" required value="Mota">
+                        <label for="floatingInput">Mô tả</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Chọn ảnh 1</label>
+                        <input class="form-control bg-dark" type="file" id="formFile" name="Hinh1" value="@Model.Hinh1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Chọn ảnh 2</label>
+                        <input class="form-control bg-dark" type="file" id="formFile" name="Hinh2" value="@Model.Hinh2">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Chọn ảnh 3</label>
+                        <input class="form-control bg-dark" type="file" id="formFile" name="Hinh3" value="@Model.Hinh3">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Chọn ảnh 4</label>
+                        <input class="form-control bg-dark" type="file" id="formFile" name="Hinh4" value="@Model.Hinh4">
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Chọn ảnh 5</label>
+                        <input class="form-control bg-dark" type="file" id="formFile" name="Hinh5 " value="@Model.Hinh5">
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect"
+                                aria-label="Floating label select example" name="Tinhtrang" required>
+                            @if (Model.Tinhtrang == "1")
+                            {
+                                <option>Tình trạng</option>
+                                <option value="0">Chưa khóa</option>
+                                <option value="1" selected>Khóa</option>
+                            }
+                            else
+                            {
+                                <option>Tình trạng</option>
+                                <option value="0" selected>Chưa khóa</option>
+                                <option value="1">Khóa</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">Open to select value</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect"
+                                aria-label="Floating label select example" name="Featured" required>
+                            @if (Model.Featured == "1")
+                            {
+                                <option>Thịnh hành</option>
+                                <option value="0">Có</option>
+                                <option value="1" selected>Không</option>
+                            }
+                            else
+                            {
+                                <option>Thịnh hành</option>
+                                <option value="0" selected>Có</option>
+                                <option value="1">Không</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">Open to select value</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect"
+                                aria-label="Floating label select example" name="Lastest" required>
+                            @if (Model.Lastest == "1")
+                            {
+                                <option>Mới nhất</option>
+                                <option value="0">Có</option>
+                                <option value="1" selected>Không</option>
+                            }
+                            else
+                            {
+                                <option>Mới nhất</option>
+                                <option value="0" selected>Có</option>
+                                <option value="1">Không</option>
+                            }
+                        </select>
+                        <label for="floatingSelect">Open to select value</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" name="Ghichu"
+                               placeholder="name@example.com">
+                        <label for="floatingInput">Ghi chú</label>
+                    </div>
+
+                    <div class="button-container d-flex mt-4">
+                        <button type="submit" class="btn btn-add">Sửa</button>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<!-- Form End -->

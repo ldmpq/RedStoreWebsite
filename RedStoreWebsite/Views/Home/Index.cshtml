@@ -1,0 +1,47 @@
+﻿
+@using RedStoreWebsite.Models
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<!------------------------------ featured Products------------------------------>
+<div class="small-container">
+    <h2 class="title">Featured Products</h2>
+    <div class="row">
+        @foreach (var featureditem in ViewBag.FeaturedProduct)
+        {
+            <div class="col-4">
+                <a href="@Url.Action("Details", new { id = @featureditem.MaSP })"><img style="max-width: 238px; max-height: 258px;" src="~/images/products/@featureditem.Hinh1"></a>
+                <a href="@Url.Action("Details", new { id = @featureditem.MaSP })"><h4>@featureditem.TenSP</h4></a>
+                <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p>@featureditem.Dongia</p>
+            </div>
+        }
+        </div>
+
+        <h2 class="title">Latest Products</h2>
+        <div class="row">
+            @foreach (var lastestitem in ViewBag.LastestProduct)
+            {
+                <div class="col-4">
+                    <a href="@Url.Action("Details", new { id = @lastestitem.MaSP })"><img style="max-width: 238px; max-height: 238px;" src="~/images/products/@lastestitem.Hinh1"></a>
+                    <a href="@Url.Action("Details", new { id = @lastestitem.MaSP })"><h4>@lastestitem.TenSP</h4></a>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p>@lastestitem.Dongia</p>
+                </div>
+            }
+        </div>
+    </div>

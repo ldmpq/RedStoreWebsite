@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ShopConnection.tbPRODUCER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<!-- Table Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">All producers</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã Nhà sản xuất</th>
+                                <th scope="col">Tên Nhà sản xuất</th>
+                                <th scope="col">Tình trạng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MaNSX</td>
+                                    <td>@item.TenNSX</td>
+                                    <td>@item.Tinhtrang</td>
+                                    <td><a href="@Url.Action("Edit", "ProducersAdmin", new { id = @item.MaNSX})" class="btn btn-delete"><button>Sửa</button></a></td>
+                                    <td><a href="" class="btn btn-edit"><button>Xóa</button></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="button-container d-flex mt-4">
+                    <a href="@Url.Action("Create", "ProducersAdmin")" class="btn btn-add"><button>Thêm</button></a>                   
+                </div>
+
+            </div>
+            <i class="mt-4">*Lưu ý: 0 tương ứng với chưa khóa | 1 tương ứng với khóa*</i>
+        </div>
+    </div>
+</div>
+<!-- Table End -->

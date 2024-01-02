@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ShopConnection.tbPRODUCT>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<!-- Table Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">All products</h6>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Mã SP</th>
+                                <th scope="col">Tên SP</th>
+                                <th scope="col">Đơn giá</th>
+                                <th scope="col">SL</th>
+                                <th scope="col">Mô tả</th>
+                                <th scope="col">Hình 1</th>
+                                <th scope="col">Hình 2</th>
+                                <th scope="col">Hình 3</th>
+                                <th scope="col">Hình 4</th>
+                                <th scope="col">Hình 5</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Featured</th>
+                                <th scope="col">Lastest</th>
+                                <th scope="col">Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.MaSP</td>
+                                    <td>@item.TenSP</td>
+                                    <td>@item.Dongia</td>
+                                    <td>@item.Soluong</td>
+                                    <td>@item.Mota</td>
+                                    <td><img style="max-height: 70px; max-width:70px;" src="~/images/products/@item.Hinh1"></td>
+                                    <td><img style="max-height: 70px; max-width:70px;" src="~/images/products/@item.Hinh2"></td>
+                                    <td><img style="max-height: 70px; max-width:70px;" src="~/images/products/@item.Hinh3"></td>
+                                    <td><img style="max-height: 70px; max-width:70px;" src="~/images/products/@item.Hinh4"></td>
+                                    <td><img style="max-height: 70px; max-width:70px;" src="~/images/products/@item.Hinh5"></td>
+                                    <td>@item.Tinhtrang</td>
+                                    <td>@item.Featured</td>
+                                    <td>@item.Lastest</td>
+                                    <td>@item.Ghichu</td>
+                                    <td><a href="@Url.Action("Edit", "ProductsAdmin")" class="btn btn-delete"><button>Sửa</button></a></td>
+                                    <td><a href="" class="btn btn-edit"><button>Xóa</button></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="button-container d-flex mt-4">
+                    <a href="@Url.Action("Create", "ProductsAdmin")" class="btn btn-add"><button>Thêm</button></a>
+                </div>
+
+            </div>
+            <i class="mt-4">*Lưu ý: 0 tương ứng với chưa khóa | 1 tương ứng với khóa*</i>
+        </div>
+    </div>
+</div>
+<!-- Table End -->
